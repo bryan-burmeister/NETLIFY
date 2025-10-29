@@ -5,37 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Moneyball Power Rankings Archive</title>
 <style>
-  :root {
-    --bg: #0f1115;
-    --panel: #151823;
-    --text: #e6e8ef;
-    --muted: #a4a8b7;
-    --accent: #8bc34a;
-    --accent2: #ffca28;
-    --border: #2a2f3a;
-  }
-  * { box-sizing: border-box; }
-  html, body {
-    margin: 0; padding: 0;
-    background: var(--bg); color: var(--text);
-    font: 17px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  }
-  .wrap { max-width: 960px; margin: 60px auto; padding: 0 20px; }
-  h1 { font-size: 32px; margin-bottom: 10px; }
-  p.sub { color: var(--muted); font-size: 15px; margin-bottom: 40px; }
-  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
-  a.link {
-    display: block; padding: 16px 20px;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--border);
-    border-radius: 8px; margin-bottom: 14px;
-    text-decoration: none; color: var(--text);
-    transition: all .2s ease;
-  }
-  a.link:hover { background: rgba(255,255,255,0.08); border-color: var(--accent); transform: translateX(4px); }
-  .week { font-weight: 700; font-size: 20px; color: var(--accent2); }
-  .desc { color: var(--muted); font-size: 14px; }
-  footer { margin-top: 40px; text-align: center; color: var(--muted); font-size: 13px; }
+  :root { --bg:#0f1115; --panel:#151823; --text:#e6e8ef; --muted:#a4a8b7; --accent:#8bc34a; --accent2:#ffca28; --border:#2a2f3a; }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:17px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+  .wrap{max-width:960px;margin:60px auto;padding:0 20px}
+  h1{font-size:32px;margin-bottom:10px}
+  p.sub{color:var(--muted);font-size:15px;margin-bottom:40px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:24px}
+  a.link{display:block;padding:16px 20px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:8px;margin-bottom:14px;text-decoration:none;color:var(--text);transition:all .2s ease}
+  a.link:hover{background:rgba(255,255,255,.08);border-color:var(--accent);transform:translateX(4px)}
+  .week{font-weight:700;font-size:20px;color:var(--accent2)}
+  .desc{color:var(--muted);font-size:14px}
+  footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px}
 </style>
 </head>
 <body>
@@ -50,8 +31,7 @@
   </div>
 
   <script>
-    // List your power rankings folder and known files.
-    // For static hosting (like Netlify), you’ll update this list automatically during deploy.
+    // Root index that links into /power_rankings/
     const folder = "power_rankings/";
     const files = [
       "week_8_power.html",
@@ -60,19 +40,26 @@
 
     const container = document.getElementById("rankings");
 
-    // Sort descending by week number
+    // Correct regex: use \d inside string ONLY; in regex literal use single backslash.
+    function weekFromName(name){
+      const m = name.match(/week_(\d+)_power/i); // works even if a path like power_rankings/week_8_power.html gets passed in later
+      if (m && m[1]) return parseInt(m[1], 10);
+      const m2 = name.match(/(\d+)/);
+      return m2 ? parseInt(m2[1],10) : 0;
+    }
+
     const sorted = files
-      .map(f => ({ file: f, week: parseInt(f.match(/week_(\\d+)_power/i)?.[1] || 0) }))
+      .map(f => ({ file: f, week: weekFromName(f) }))
       .sort((a, b) => b.week - a.week);
 
     sorted.forEach(({ file, week }) => {
       const link = document.createElement("a");
       link.className = "link";
       link.href = folder + file;
-      link.innerHTML = `
-        <div class="week">Week ${week} Power Rankings</div>
+      link.innerHTML = \`
+        <div class="week">Week \${week} Power Rankings</div>
         <div class="desc">The unholy blend of stats, sarcasm, and chaos.</div>
-      `;
+      \`;
       container.appendChild(link);
     });
   </script>
