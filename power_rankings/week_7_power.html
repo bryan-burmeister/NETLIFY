@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moneyball ROS Power Rankings — Week 7 (Median Format)</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #151823;
+    --text: #e6e8ef;
+    --muted: #a4a8b7;
+    --accent: #8bc34a;
+    --accent2: #ffca28;
+    --danger: #ef5350;
+    --ok: #42a5f5;
+    --border: #2a2f3a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; }
+  .wrap { max-width: 1200px; margin: 32px auto; padding: 0 16px; }
+  h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: .3px; }
+  .sub { color: var(--muted); margin: 0 0 24px; font-size: 14px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; }
+  thead th { position: sticky; top: 0; background: #1a1f2b; z-index: 1; }
+  th, td { padding: 14px 12px; vertical-align: top; border-bottom: 1px solid var(--border); }
+  th { text-align: left; font-weight: 700; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+  td { font-size: 15px; }
+  tbody tr:hover { background: rgba(255,255,255,0.03); }
+  .rank { font-weight: 800; width: 52px; text-align: right; padding-right: 8px; }
+  .team { font-weight: 700; }
+  .wins { font-variant-numeric: tabular-nums; }
+  .pct { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .02em; margin-right: 6px; }
+  .tag.playoffs { background: rgba(139,195,74,.15); color: var(--accent); border: 1px solid rgba(139,195,74,.35); }
+  .tag.title { background: rgba(255,202,40,.15); color: var(--accent2); border: 1px solid rgba(255,202,40,.35); }
+  .badge { font-weight: 800; }
+  .tlrd { color: #e8eaf6; }
+  .footer { color: var(--muted); font-size: 12px; margin-top: 10px; }
+  @media (max-width: 880px) {
+    .wins, .pct { font-size: 14px; }
+    .tlrd { font-size: 14px; }
+  }
+  @media (max-width: 720px) {
+    th:nth-child(3), td:nth-child(3) { display: none; } /* hide Exp Wins on narrow */
+  }
+  @media (max-width: 560px) {
+    th:nth-child(4), td:nth-child(4),
+    th:nth-child(5), td:nth-child(5) { display: none; } /* hide odds on very narrow */
+    .rank { width: 40px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Moneyball League — Rest‑of‑Season Power Rankings</h1>
+    <p class="sub">Week 7 baseline · Median‑win format (top‑7 points earn an extra W) · Exp. Final Wins out of 28</p>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th class="rank">#</th>
+            <th>Team</th>
+            <th>Exp. Wins</th>
+            <th>Playoff Odds</th>
+            <th>Title Odds</th>
+            <th>TL;DR (Irreverent Take)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td class="team">mattburmeister</td>
+            <td class="wins">22.2</td>
+            <td class="pct"><span class="tag playoffs">100%</span></td>
+            <td class="pct"><span class="tag title">27.1%</span></td>
+            <td class="tlrd">A cold, efficient killing machine that makes Thanos look like a motivational speaker. T‑800 vibes: methodical, unstoppable, empathy sold separately. Bo Nix and Justin Jefferson don’t score points, they collect souls.</td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td class="team">bburmeister170</td>
+            <td class="wins">18.4</td>
+            <td class="pct"><span class="tag playoffs">95.2%</span></td>
+            <td class="pct"><span class="tag title">29.0%</span></td>
+            <td class="tlrd">Built like the 2007 Patriots with CMC playing all 22 positions. John Wick energy in a room full of interns who forgot their bullets. If there’s a weakness, it filed for witness protection.</td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td class="team">dolfinstrykers</td>
+            <td class="wins">17.4</td>
+            <td class="pct"><span class="tag playoffs">87.4%</span></td>
+            <td class="pct"><span class="tag title">15.5%</span></td>
+            <td class="tlrd">It’s <em>Ocean’s Eleven</em> if the crew keeps showing up to the wrong casino. Talent everywhere, coordination optional. When the stars align, it’s a box‑office smash; when they don’t, cue the police scanner.</td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td class="team">kris3434</td>
+            <td class="wins">17.2</td>
+            <td class="pct"><span class="tag playoffs">81.6%</span></td>
+            <td class="pct"><span class="tag title">4.3%</span></td>
+            <td class="tlrd">A masterclass in controlled chaos. Trey McBride’s breakout reads like a <em>Breaking Bad</em> subplot — unexpected and oddly perfect. Wins ugly, drinks ugly, keeps getting invited back.</td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td class="team">BenVan</td>
+            <td class="wins">15.7</td>
+            <td class="pct"><span class="tag playoffs">63.0%</span></td>
+            <td class="pct"><span class="tag title">6.4%</span></td>
+            <td class="tlrd">An advertisement for middle management. Not flashy, just persistently adequate — the <em>Office</em> of fantasy teams. Median weeks reward beige excellence with quiet 132‑118 wins.</td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td class="team">willpetsche</td>
+            <td class="wins">14.9</td>
+            <td class="pct"><span class="tag playoffs">52.8%</span></td>
+            <td class="pct"><span class="tag title">6.0%</span></td>
+            <td class="tlrd"><em>Mad Max: Fury Road</em> roster — loud, volatile, held together by duct tape and caffeine. When it works, glorious carnage; when it doesn’t, two‑hour desert hallucination.</td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td class="team">sdallas979</td>
+            <td class="wins">14.6</td>
+            <td class="pct"><span class="tag playoffs">52.2%</span></td>
+            <td class="pct"><span class="tag title">9.5%</span></td>
+            <td class="tlrd">A Michael Bay production — explosions, chaos, and a plot stapled together at lunch. The stars can blow the roof off; the supporting cast belongs to community theater. Bring popcorn and insurance.</td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td class="team">Jas10241958</td>
+            <td class="wins">14.1</td>
+            <td class="pct"><span class="tag playoffs">30.8%</span></td>
+            <td class="pct"><span class="tag title">1.2%</span></td>
+            <td class="tlrd">A prestige drama in a mid‑season slump. Jonathan Taylor is the tortured antihero dragging the script while the rest of the cast forgets their lines. Ironic Emmy buzz; early cancellation.</td>
+          </tr>
+          <tr>
+            <td class="rank">9</td>
+            <td class="team">Cgokan35</td>
+            <td class="wins">13.8</td>
+            <td class="pct"><span class="tag playoffs">23.4%</span></td>
+            <td class="pct"><span class="tag title">0.5%</span></td>
+            <td class="tlrd">An M. Night Shyamalan special — twist endings, inexplicable choices, half the audience screaming “what just happened?” CeeDee and Jaylen keep the plot alive; the rest is straight‑to‑DVD.</td>
+          </tr>
+          <tr>
+            <td class="rank">10</td>
+            <td class="team">benessig</td>
+            <td class="wins">11.7</td>
+            <td class="pct"><span class="tag playoffs">6.8%</span></td>
+            <td class="pct"><span class="tag title">0.3%</span></td>
+            <td class="tlrd"><em>Rick and Morty</em> energy — flashes of genius buried under existential nonsense. The bench keeps dropping 30s while the starters rehearse for reality TV. If irony scored, this would be 7‑0.</td>
+          </tr>
+          <tr>
+            <td class="rank">11</td>
+            <td class="team">warriors85</td>
+            <td class="wins">11.7</td>
+            <td class="pct"><span class="tag playoffs">5.8%</span></td>
+            <td class="pct"><span class="tag title">0.2%</span></td>
+            <td class="tlrd">Mahomes vs. the world. It’s <em>The Last Dance</em> without the rings — one superstar, a bunch of guys named Steve, and a faint smell of decline.</td>
+          </tr>
+          <tr>
+            <td class="rank">12</td>
+            <td class="team">sYsTeMheaD</td>
+            <td class="wins">9.6</td>
+            <td class="pct"><span class="tag playoffs">0.8%</span></td>
+            <td class="pct"><span class="tag title">0.0%</span></td>
+            <td class="tlrd">The league’s <em>Fear and Loathing</em> — psychedelic chaos and questionable logic. Lineups drafted on shrooms and good intentions. You don’t watch to see wins; you watch for the explosions.</td>
+          </tr>
+          <tr>
+            <td class="rank">13</td>
+            <td class="team">JayHawk477</td>
+            <td class="wins">7.8</td>
+            <td class="pct"><span class="tag playoffs">0.1%</span></td>
+            <td class="pct"><span class="tag title">0.0%</span></td>
+            <td class="tlrd">A ’90s sports movie where the lesson never lands. Cleveland’s D is the only adult; everyone else is smoking in the parking lot. Cue the sad montage.</td>
+          </tr>
+          <tr>
+            <td class="rank">14</td>
+            <td class="team">JustinMcAndrews</td>
+            <td class="wins">7.0</td>
+            <td class="pct"><span class="tag playoffs">0.0%</span></td>
+            <td class="pct"><span class="tag title">0.0%</span></td>
+            <td class="tlrd">A tragicomedy in 14 acts. Post‑apocalyptic <em>Glee</em> cast — everyone used to be somebody, now they’re singing for scraps. Not a rebuild, a confession.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="footer">Method: Week 7 baseline strength (Starters + 0.30×Bench), simulated 7 remaining weeks with median win (top‑7 points) + H2H. Exp. Wins = projected H2H + projected median wins added to current totals.</p>
+  </div>
+</body>
+</html>
