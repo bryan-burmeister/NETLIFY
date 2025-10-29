@@ -23,45 +23,19 @@
   <div class="wrap">
     <h1>🏈 Moneyball Power Rankings Archive</h1>
     <p class="sub">Select a week to relive the chaos, the carnage, and the creative profanity.</p>
-    <div id="rankings" class="card"></div>
+    <div class="card">
+      <a class="link" href="/power_rankings/week_8_power.html">
+        <div class="week">Week 8 Power Rankings</div>
+        <div class="desc">Director’s Cut — fresh odds, fresh insults, same beautiful violence.</div>
+      </a>
+      <a class="link" href="/power_rankings/week_7_power.html">
+        <div class="week">Week 7 Power Rankings</div>
+        <div class="desc">The original banger — the moment the league realized feelings are optional.</div>
+      </a>
+    </div>
     <footer>
-      Updated automatically as new power rankings drop.<br />
-      Hosted via Netlify · Designed by Moneyball Analyst 🧠💀
+      Updated as new power rankings drop.<br />Hosted via Netlify · Designed by Moneyball Analyst 🧠💀
     </footer>
   </div>
-
-  <script>
-    // Root index that links into /power_rankings/
-    const folder = "power_rankings/";
-    const files = [
-      "week_8_power.html",
-      "week_7_power.html"
-    ];
-
-    const container = document.getElementById("rankings");
-
-    // Correct regex: use \d inside string ONLY; in regex literal use single backslash.
-    function weekFromName(name){
-      const m = name.match(/week_(\d+)_power/i); // works even if a path like power_rankings/week_8_power.html gets passed in later
-      if (m && m[1]) return parseInt(m[1], 10);
-      const m2 = name.match(/(\d+)/);
-      return m2 ? parseInt(m2[1],10) : 0;
-    }
-
-    const sorted = files
-      .map(f => ({ file: f, week: weekFromName(f) }))
-      .sort((a, b) => b.week - a.week);
-
-    sorted.forEach(({ file, week }) => {
-      const link = document.createElement("a");
-      link.className = "link";
-      link.href = folder + file;
-      link.innerHTML = \`
-        <div class="week">Week \${week} Power Rankings</div>
-        <div class="desc">The unholy blend of stats, sarcasm, and chaos.</div>
-      \`;
-      container.appendChild(link);
-    });
-  </script>
 </body>
 </html>
