@@ -1,145 +1,142 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Moneyball ROS Power Rankings — Week 9</title>
-<style>
-  :root {
-    --bg:#0f1115; --panel:#151823; --text:#e6e8ef; --muted:#a4a8b7;
-    --accent:#8bc34a; --accent2:#ffca28; --border:#2a2f3a;
-  }
-  * { box-sizing:border-box }
-  html,body {
-    margin:0; padding:0;
-    background:var(--bg); color:var(--text);
-    font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
-  }
-  .wrap { max-width:1200px; margin:32px auto; padding:0 16px }
-  h1 { margin:0 0 8px; font-size:28px; letter-spacing:.3px }
-  .sub { color:var(--muted); margin:0 0 24px; font-size:14px }
-
-  .card {
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:12px;
-    /* removed overflow:hidden to prevent clipping */
-  }
-
-  .table-scroller {
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    border-radius:12px; /* preserve rounded look */
-  }
-
-  table { width:100%; border-collapse:collapse }
-  thead th { position:sticky; top:0; background:#1a1f2b; z-index:1 }
-  th,td {
-    padding:14px 12px;
-    vertical-align:top;
-    border-bottom:1px solid var(--border);
-  }
-  th {
-    text-align:left;
-    font-weight:700;
-    font-size:13px;
-    color:var(--muted);
-    text-transform:uppercase;
-    letter-spacing:.08em;
-  }
-  td { font-size:15px }
-  tbody tr:hover { background:rgba(255,255,255,.03) }
-
-  .rank { font-weight:800; width:52px; text-align:right; padding-right:8px }
-  .team { font-weight:700 }
-  .wins, .pct { font-variant-numeric:tabular-nums }
-  .pct { white-space:nowrap }
-
-  .tag {
-    display:inline-block;
-    padding:2px 8px;
-    border-radius:999px;
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:.02em;
-    margin-right:6px;
-  }
-  .tag.playoffs {
-    background:rgba(139,195,74,.15);
-    color:var(--accent);
-    border:1px solid rgba(139,195,74,.35);
-  }
-  .tag.title {
-    background:rgba(255,202,40,.15);
-    color:var(--accent2);
-    border:1px solid rgba(255,202,40,.35);
-  }
-  .tlrd {
-    color:#e8eaf6;
-    word-break:break-word;
-    overflow-wrap:anywhere;
-  }
-  .footer {
-    color:var(--muted);
-    font-size:12px;
-    margin-top:10px;
-  }
-
-  @media (max-width:880px){
-    .wins,.pct{font-size:14px}
-    .tlrd{font-size:14px}
-  }
-  @media (max-width:720px){
-    th:nth-child(3),td:nth-child(3){display:none}
-  }
-  @media (max-width:560px){
-    th:nth-child(4),td:nth-child(4),
-    th:nth-child(5),td:nth-child(5){display:none}
-    .rank{width:40px}
-    thead th{position:static} /* disable sticky to avoid iOS bug */
-  }
-</style>
+  <meta charset="utf-8" />
+  <title>Week 10 Powerball Rankings — Two Pump Chump Edition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;margin:24px;max-width:900px}
+    h2{margin:0 0 6px 0}
+    .sep{margin:18px 0;color:#888}
+    .team{margin-bottom:18px}
+    .star{font-weight:600}
+  </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>Moneyball League — Rest-of-Season Power Rankings</h1>
-    <p class="sub">Week 9 baseline · Median-win format (top-7 points earn an extra W)
-    <div class="card">
-      <div class="table-scroller">
-        <table>
-          <thead>
-            <tr>
-              <th class="rank">#</th>
-              <th>Team</th>
-              <th>Exp. Wins</th>
-              <th>Playoff Odds</th>
-              <th>Title Odds</th>
-              <th>Commentary</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="rank">1</td><td class="team">mattburmeister</td><td class="wins">21.90</td><td class="pct"><span class="tag playoffs">98.0%</span></td><td class="pct"><span class="tag title">22.0%</span></td><td class="tlrd">Week 9 receipts read like a guilty pleasure playlist — two stars headlined your crime spree and the box score needed a cigarette. QB play was adult cinema, RBs handled cleanup, and the flex texted your opponent "my bad" with a winky face. This wasn't a win; it was a public service announcement about hydration.</td></tr>
-            <tr><td class="rank">2</td><td class="team">bburmeister170</td><td class="wins">21.40</td><td class="pct"><span class="tag playoffs">96.0%</span></td><td class="pct"><span class="tag title">19.0%</span></td><td class="tlrd">Your top two in Week 9 walked in like bottle service and left with someone else's tab. Red-zone execution was rude, precise, and technically legal in three states. If this roster gets any more efficient, we'll have to declare it a monopoly.</td></tr>
-            <tr><td class="rank">3</td><td class="team">dolfinstrykers</td><td class="wins">20.80</td><td class="pct"><span class="tag playoffs">92.0%</span></td><td class="pct"><span class="tag title">15.0%</span></td><td class="tlrd">Your Week 9 headliners turned coverage shells into papier-mâché. The stack hit like espresso with a side of bad decisions, and the bench still made eye contact. Opponents left needing electrolytes and a streaming QB.</td></tr>
-            <tr><td class="rank">4</td><td class="team">kris3434</td><td class="wins">20.20</td><td class="pct"><span class="tag playoffs">88.0%</span></td><td class="pct"><span class="tag title">11.0%</span></td><td class="tlrd">The Week 9 co-conspirators were missionary-efficient with freak energy. You didn't just win routes; you filed paperwork. It's football's version of "yes chef" — precise, commanding, and vaguely inappropriate.</td></tr>
-            <tr><td class="rank">5</td><td class="team">Jas10241958</td><td class="wins">19.70</td><td class="pct"><span class="tag playoffs">82.0%</span></td><td class="pct"><span class="tag title">9.0%</span></td><td class="tlrd">Your RB1 and WR1 ran Week 9 like a smash-and-grab with better cardio. Matchups were milked like commissions, touchdowns tipped generously. The fantasy equivalent of hate-sex: nobody's proud, everybody remembers.</td></tr>
-            <tr><td class="rank">6</td><td class="team">willpetsche</td><td class="wins">19.10</td><td class="pct"><span class="tag playoffs">76.0%</span></td><td class="pct"><span class="tag title">7.0%</span></td><td class="tlrd">Your top two came in like a drunk ex at 2 a.m. — loud, dramatic, and surprisingly productive. Every drive looked like regret wrapped in touchdowns. It's chaos, but the kind that tips well.</td></tr>
-            <tr><td class="rank">7</td><td class="team">benessig</td><td class="wins">18.60</td><td class="pct"><span class="tag playoffs">61.0%</span></td><td class="pct"><span class="tag title">5.0%</span></td><td class="tlrd">Headliners in Week 9 gaslit every cornerback in their way. Efficiency kink fully activated; the flex just nodded like "of course we meant to do that." It's jurisprudence with abs.</td></tr>
-            <tr><td class="rank">8</td><td class="team">sdallas979</td><td class="wins">18.20</td><td class="pct"><span class="tag playoffs">48.0%</span></td><td class="pct"><span class="tag title">4.0%</span></td><td class="tlrd">Two studs treated the red zone like Tinder — quick, messy, satisfying. The WRs tease, the RBs finish, and the goalpost needs makeup remover. Not pretty; very effective.</td></tr>
-            <tr><td class="rank">9</td><td class="team">BenVan</td><td class="wins">17.90</td><td class="pct"><span class="tag playoffs">41.0%</span></td><td class="pct"><span class="tag title">3.0%</span></td><td class="tlrd">Blue-collar stars clocked in early, clocked out late, and left your opponent filing for OSHA. Nothing fancy, just consistent violence. Your TE is still a haunted house, but the rest of the roster pays the mortgage.</td></tr>
-            <tr><td class="rank">10</td><td class="team">Cgokan35</td><td class="wins">17.60</td><td class="pct"><span class="tag playoffs">36.0%</span></td><td class="pct"><span class="tag title">2.0%</span></td><td class="tlrd">Your WR1 gave stump speeches; the cabinet occasionally remembered its notes. The two Week 9 ring-leaders were sexy on camera, filibuster off script. Policy passed anyway: six for a touchdown.</td></tr>
-            <tr><td class="rank">11</td><td class="team">sYsTeMheaD</td><td class="wins">17.10</td><td class="pct"><span class="tag playoffs">28.0%</span></td><td class="pct"><span class="tag title">1.0%</span></td><td class="tlrd">Noise-rock box score: volume fantastic, tuning optional. The two headliners landed haymakers while everyone else fiddled with pedals. Chaos is the brand; touchdowns are the kink.</td></tr>
-            <tr><td class="rank">12</td><td class="team">warriors85</td><td class="wins">16.60</td><td class="pct"><span class="tag playoffs">21.0%</span></td><td class="pct"><span class="tag title">&lt;1%</span></td><td class="tlrd">Oppenheimer offense: your top two were the blast; the rest held the Geiger counter. Still dangerous, still radioactive, still a little hot. One trade and this turns from fallout to fireworks.</td></tr>
-            <tr><td class="rank">13</td><td class="team">JayHawk477</td><td class="wins">16.10</td><td class="pct"><span class="tag playoffs">14.0%</span></td><td class="pct"><span class="tag title">&lt;1%</span></td><td class="tlrd">Metallica riff, kazoo chorus — the stars shredded, the flex mumbled. Your two best made it art; everyone else smoked in the parking lot. Not performance: confession.</td></tr>
-            <tr><td class="rank">14</td><td class="team">JustinMcAndrews</td><td class="wins">15.40</td><td class="pct"><span class="tag playoffs">8.0%</span></td><td class="pct"><span class="tag title">&lt;1%</span></td><td class="tlrd">Vegas chapel wedding at 3 a.m. — bad plan, great photos, expensive regret. The two Week 9 bright spots tried; the rest hit snooze. This isn't rebuilding; it's repenting.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <p class="footer">
-      Method: Weeks 1–9 strength (Starters + 0.30×Bench), simulated 5 remaining weeks with median-win (top-7 points) + H2H.
-      Week 9 blurbs are written to reference each team's top-two scorers.
-    </p>
-  </div>
+
+<div class="team">
+  <h2>🥇 1. Sunday Afternoon Bo Jobs (mattburmeister) — 8-1, 1336.7 pts</h2>
+  <p class="star">Star: Bo Nix (177.6 pts)</p>
+  <p>Bo Nix is out here slinging balls like he’s trying to get a sponsorship from Trojan. Every deep shot lands, every completion leaves defenders questioning their life choices.</p>
+  <p><strong>Team vibe:</strong> This roster’s so dominant it needs a safe word. Opponents show up, take their L, and leave emotionally raw.</p>
+</div>
+
+<div class="sep">⸻</div>
+
+<div class="team">
+  <h2>🥈 2. DolfinStrykers (dolfinstrykers) — 6-3, 1281.1 pts</h2>
+  <p class="star">Star: Matthew Stafford (165.9 pts)</p>
+  <p>Stafford’s still going strong like a middle-aged man with a secret prescription and a weekend free of kids. You can’t kill this man’s fantasy libido.</p>
+  <p><strong>Team vibe:</strong> The DolfinStrykers are the quiet freaks — look vanilla at first, then drop 140 on you out of nowhere. It’s missionary, but with eye contact that ruins lives.</p>
+</div>
+
+<div class="sep">⸻</div>
+
+<div class="team">
+  <h2>🥉 3. BabyBilly’s Bible Ballers (kris3434) — 6-3, 1269.1 pts</h2>
+  <p class="star">Star: Bijan Robinson (168.8 pts)</p>
+  <p>Bijan runs harder than your ex’s rebound — smooth, powerful, and leaving defenders begging for aftercare.</p>
+  <p><strong>Team vibe:</strong> This team’s got that “praise the Lord and pass the lube” energy. Sanctified smut. Every Sunday feels like church… if church had more body oil.</p>
+</div>
+
+<div class="sep">⸻</div>
+
+<div class="team">
+  <h2>4. Smashville (bburmeister170) — 5-4, 1351.0 pts</h2>
+  <p class="star">Star: Christian McCaffrey (231.2 pts)</p>
+  <p>CMC scores so often it’s starting to feel like a public indecency charge waiting to happen. You can’t spell “fantasy climax” without McCaffrey.</p>
+  <p><strong>Team vibe:</strong> Smashville lives up to its name — pure stamina, no commitment. They’ll blow you out, leave you breathless, and never text you again.</p>
+</div>
+
+<div class="sep">⸻</div>
+
+<div class="team">
+  <h2>5. Diamond Dogs (BenVan) — 5-4, 1248.9 pts</h2>
+  <p class="star">Star: Josh Allen (182.1 pts)</p>
+  <p>Josh Allen’s throwing heat like a man trying to win back his ex with unsolicited nudes. Every pass is pure confidence and zero shame.</p>
+  <p><strong>Team vibe:</strong> Diamond Dogs are like a power couple in their toxic phase — dominant, dramatic, and somehow still turning everyone on.</p>
+</div>
+
+<div class="sep">⸻</div>
+
+<div class="team">
+  <h2>6. The Plague (willpetsche) — 5-4, 1235.4 pts</h2>
+  <p class="star">Star: Tyler Warren (139.4 pts)</p>
+  <p>Tyler Warren’s that sneaky hookup who you didn’t expect to be good — and now you’re questioning everything you thought you knew about your preferences.</p>
+  <p><strong>Team vibe:</strong> This roster spreads faster than gossip in a small town. Every matchup starts with “it’s just a sniffle” and ends with regret and ointment.</p>
+</div>
+
+<div class="sep">⸻</div>
+
+<div class="team">
+  <h2>7. GRAMPS × 3 (Jas10241958) — 4-5, 1269.8 pts</h2>
+  <p class="star">Star: Jonathan Taylor (224.3 pts)</p>
+  <p>Taylor runs like he’s late for his daily Cialis dose — powerful, efficient, and fueled by spite.</p>
+  <p><strong>Team vibe:</strong> GRAMPS is proof you don’t have to be young to put up big numbers. It’s all experience, endurance, and a suspiciously high heart rate.</p>
+</div>
+
+<div class="sep">⸻</div>
+
+<div class="team">
+  <h2>8. THE U (sYsTeMheaD) — 4-5, 1225.6 pts</h2>
+  <p class="star">Star: Drake Maye (187.4 pts)</p>
+  <p>Drake Maye’s throwing it around like a college freshman at his first frat party — reckless, confident, and somehow it’s working.</p>
+  <p><strong>Team vibe:</strong> THE U has big “started strong, finished too early” energy. This team’s foreplay is electric, but the follow-through needs work.</p>
+</div>
+
+<div class="sep">⸻</div>
+
+<div class="team">
+  <h2>9. CGG (Cgokan35) — 4-5, 1216.1 pts</h2>
+  <p class="star">Star: Baker Mayfield (138.8 pts)</p>
+  <p>Baker plays with the energy of a guy who yells “let’s make this quick” and still needs a towel after. Chaotic. Unpredictable. Occasionally impressive.</p>
+  <p><strong>Team vibe:</strong> CGG’s roster is like that hookup you text at 2 AM — not your first choice, but you know exactly what you’re getting: average results and minor regret.</p>
+</div>
+
+<div class="sep">⸻</div>
+
+<div class="team">
+  <h2>10. Love Hurts (benessig) — 4-5, 1185.7 pts</h2>
+  <p class="star">Star: Jalen Hurts (176.6 pts)</p>
+  <p>Hurts hits the fantasy G-spot every week — mobile, dominant, and always leaving defenders in a heap of shame.</p>
+  <p><strong>Team vibe:</strong> The name’s no lie — Love Hurts has the raw talent, but too many busted performances. It’s like tantric fantasy football: long, frustrating, and unsatisfying for everyone involved.</p>
+</div>
+
+<div class="sep">⸻</div>
+
+<div class="team">
+  <h2>11. Dead Rabbits (JustinMcAndrews) — 4-5, 1089.5 pts</h2>
+  <p class="star">Star: Caleb Williams (152.4 pts)</p>
+  <p>Caleb’s dragging this corpse of a team like a man carrying his drunk friend home from the bar — determined but clearly questioning his life choices.</p>
+  <p><strong>Team vibe:</strong> Dead Rabbits are hanging on by a thread and pure stubbornness. It’s not sexy, but damn it, you respect the effort. Like a bad porno — awful execution, but everyone’s trying.</p>
+</div>
+
+<div class="sep">⸻</div>
+
+<div class="team">
+  <h2>12. Big D (sdallas979) — 3-6, 1251.4 pts</h2>
+  <p class="star">Star: Ja’Marr Chase (187.7 pts)</p>
+  <p>Ja’Marr’s putting in work like a professional — hands everywhere, no drops, pure showmanship.</p>
+  <p><strong>Team vibe:</strong> Big D has big potential but soft follow-through. This squad teases 160 every week and finishes with 120. It’s the blue balls of fantasy rosters.</p>
+</div>
+
+<div class="sep">⸻</div>
+
+<div class="team">
+  <h2>13. The JayHawks (JayHawk477) — 3-6, 1140.1 pts</h2>
+  <p class="star">Star: Drake London (133.7 pts)</p>
+  <p>London’s got moves, but he’s more tease than finish — all foreplay, no fireworks.</p>
+  <p><strong>Team vibe:</strong> JayHawks talk a big game but ghost the scoreboard when it matters. The fantasy equivalent of getting catfished by your own draft.</p>
+</div>
+
+<div class="sep">⸻</div>
+
+<div class="team">
+  <h2>14. Warriors (warriors85) — 2-7, 1170.4 pts</h2>
+  <p class="star">Star: Patrick Mahomes (202.8 pts)</p>
+  <p>Mahomes is out here putting up porn star numbers while the rest of the team watches from the sidelines eating chips.</p>
+  <p><strong>Team vibe:</strong> The Warriors are that guy at the orgy who showed up ready, but everyone else forgot the invite. Mahomes deserves alimony after this season.</p>
+</div>
+
 </body>
 </html>
