@@ -1,25 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Moneyball ROS Power Rankings — Week 9 (Player-Specific Roast Edition)</title>
 <style>
-  :root { --bg:#0f1115; --panel:#151823; --text:#e6e8ef; --muted:#a4a8b7; --accent:#8bc34a; --accent2:#ffca28; --border:#2a2f3a; }
-  * { box-sizing:border-box } html,body { margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
-  .wrap { max-width:1200px;margin:32px auto;padding:0 16px }
-  h1 { margin:0 0 8px;font-size:28px;letter-spacing:.3px } .sub { color:var(--muted);margin:0 0 24px;font-size:14px }
-  .card { background:var(--panel);border:1px solid var(--border);border-radius:12px;overflow:hidden } table{width:100%;border-collapse:collapse}
-  thead th{position:sticky;top:0;background:#1a1f2b;z-index:1} th,td{padding:14px 12px;vertical-align:top;border-bottom:1px solid var(--border)}
-  th{text-align:left;font-weight:700;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em} td{font-size:15px}
-  tbody tr:hover{background:rgba(255,255,255,.03)} .rank{font-weight:800;width:52px;text-align:right;padding-right:8px} .team{font-weight:700}
-  .wins{font-variant-numeric:tabular-nums} .pct{font-variant-numeric:tabular-nums;white-space:nowrap}
-  .tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.02em;margin-right:6px}
-  .tag.playoffs{background:rgba(139,195,74,.15);color:var(--accent);border:1px solid rgba(139,195,74,.35)}
-  .tag.title{background:rgba(255,202,40,.15);color:var(--accent2);border:1px solid rgba(255,202,40,.35)}
-  .tlrd{color:#e8eaf6} .footer{color:var(--muted);font-size:12px;margin-top:10px}
-  @media (max-width:880px){.wins,.pct{font-size:14px} .tlrd{font-size:14px}}
-  @media (max-width:720px){th:nth-child(3),td:nth-child(3){display:none}}
-  @media (max-width:560px){th:nth-child(4),td:nth-child(4),th:nth-child(5),td:nth-child(5){display:none} .rank{width:40px}}
+  :root {
+    --bg:#0f1115; --panel:#151823; --text:#e6e8ef; --muted:#a4a8b7;
+    --accent:#8bc34a; --accent2:#ffca28; --border:#2a2f3a;
+  }
+  * { box-sizing:border-box }
+  html,body {
+    margin:0; padding:0;
+    background:var(--bg); color:var(--text);
+    font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+  }
+  .wrap { max-width:1200px; margin:32px auto; padding:0 16px }
+  h1 { margin:0 0 8px; font-size:28px; letter-spacing:.3px }
+  .sub { color:var(--muted); margin:0 0 24px; font-size:14px }
+
+  .card {
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:12px;
+    /* removed overflow:hidden to prevent clipping */
+  }
+
+  .table-scroller {
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    border-radius:12px; /* preserve rounded look */
+  }
+
+  table { width:100%; border-collapse:collapse }
+  thead th { position:sticky; top:0; background:#1a1f2b; z-index:1 }
+  th,td {
+    padding:14px 12px;
+    vertical-align:top;
+    border-bottom:1px solid var(--border);
+  }
+  th {
+    text-align:left;
+    font-weight:700;
+    font-size:13px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+  td { font-size:15px }
+  tbody tr:hover { background:rgba(255,255,255,.03) }
+
+  .rank { font-weight:800; width:52px; text-align:right; padding-right:8px }
+  .team { font-weight:700 }
+  .wins, .pct { font-variant-numeric:tabular-nums }
+  .pct { white-space:nowrap }
+
+  .tag {
+    display:inline-block;
+    padding:2px 8px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.02em;
+    margin-right:6px;
+  }
+  .tag.playoffs {
+    background:rgba(139,195,74,.15);
+    color:var(--accent);
+    border:1px solid rgba(139,195,74,.35);
+  }
+  .tag.title {
+    background:rgba(255,202,40,.15);
+    color:var(--accent2);
+    border:1px solid rgba(255,202,40,.35);
+  }
+  .tlrd {
+    color:#e8eaf6;
+    word-break:break-word;
+    overflow-wrap:anywhere;
+  }
+  .footer {
+    color:var(--muted);
+    font-size:12px;
+    margin-top:10px;
+  }
+
+  @media (max-width:880px){
+    .wins,.pct{font-size:14px}
+    .tlrd{font-size:14px}
+  }
+  @media (max-width:720px){
+    th:nth-child(3),td:nth-child(3){display:none}
+  }
+  @media (max-width:560px){
+    th:nth-child(4),td:nth-child(4),
+    th:nth-child(5),td:nth-child(5){display:none}
+    .rank{width:40px}
+    thead th{position:static} /* disable sticky to avoid iOS bug */
+  }
 </style>
 </head>
 <body>
@@ -27,42 +105,41 @@
     <h1>Moneyball League — Rest-of-Season Power Rankings</h1>
     <p class="sub">Week 9 baseline · Median-win format (top-7 points earn an extra W) · Player-Specific Roast Edition</p>
     <div class="card">
-      <table>
-        <thead><tr><th class="rank">#</th><th>Team</th><th>Exp. Wins</th><th>Playoff Odds</th><th>Title Odds</th><th>TL;DR</th></tr></thead>
-        <tbody>
-
-          <tr><td class="rank">1</td><td class="team">mattburmeister</td><td class="wins">21.90</td><td class="pct"><span class="tag playoffs">98.0%</span></td><td class="pct"><span class="tag title">22.0%</span></td><td class="tlrd">Week 9 receipts read like a guilty pleasure playlist — two stars headlined your crime spree and the box score needed a cigarette. QB play was adult cinema, RBs handled cleanup, and the flex texted your opponent "my bad" with a winky face. This wasn't a win; it was a public service announcement about hydration.</td></tr>
-
-          <tr><td class="rank">2</td><td class="team">bburmeister170</td><td class="wins">21.40</td><td class="pct"><span class="tag playoffs">96.0%</span></td><td class="pct"><span class="tag title">19.0%</span></td><td class="tlrd">Your top two in Week 9 walked in like bottle service and left with someone else's tab. Red-zone execution was rude, precise, and technically legal in three states. If this roster gets any more efficient, we'll have to declare it a monopoly.</td></tr>
-
-          <tr><td class="rank">3</td><td class="team">dolfinstrykers</td><td class="wins">20.80</td><td class="pct"><span class="tag playoffs">92.0%</span></td><td class="pct"><span class="tag title">15.0%</span></td><td class="tlrd">Your Week 9 headliners turned coverage shells into papier-mâché. The stack hit like espresso with a side of bad decisions, and the bench still made eye contact. Opponents left needing electrolytes and a streaming QB.</td></tr>
-
-          <tr><td class="rank">4</td><td class="team">kris3434</td><td class="wins">20.20</td><td class="pct"><span class="tag playoffs">88.0%</span></td><td class="pct"><span class="tag title">11.0%</span></td><td class="tlrd">The Week 9 co-conspirators were missionary-efficient with freak energy. You didn't just win routes; you filed paperwork. It's football's version of "yes chef" — precise, commanding, and vaguely inappropriate.</td></tr>
-
-          <tr><td class="rank">5</td><td class="team">Jas10241958</td><td class="wins">19.70</td><td class="pct"><span class="tag playoffs">82.0%</span></td><td class="pct"><span class="tag title">9.0%</span></td><td class="tlrd">Your RB1 and WR1 ran Week 9 like a smash-and-grab with better cardio. Matchups were milked like commissions, touchdowns tipped generously. The fantasy equivalent of hate-sex: nobody's proud, everybody remembers.</td></tr>
-
-          <tr><td class="rank">6</td><td class="team">willpetsche</td><td class="wins">19.10</td><td class="pct"><span class="tag playoffs">76.0%</span></td><td class="pct"><span class="tag title">7.0%</span></td><td class="tlrd">Your top two came in like a drunk ex at 2 a.m. — loud, dramatic, and surprisingly productive. Every drive looked like regret wrapped in touchdowns. It's chaos, but the kind that tips well.</td></tr>
-
-          <tr><td class="rank">7</td><td class="team">benessig</td><td class="wins">18.60</td><td class="pct"><span class="tag playoffs">61.0%</span></td><td class="pct"><span class="tag title">5.0%</span></td><td class="tlrd">Headliners in Week 9 gaslit every cornerback in their way. Efficiency kink fully activated; the flex just nodded like "of course we meant to do that." It's jurisprudence with abs.</td></tr>
-
-          <tr><td class="rank">8</td><td class="team">sdallas979</td><td class="wins">18.20</td><td class="pct"><span class="tag playoffs">48.0%</span></td><td class="pct"><span class="tag title">4.0%</span></td><td class="tlrd">Two studs treated the red zone like Tinder — quick, messy, satisfying. The WRs tease, the RBs finish, and the goalpost needs makeup remover. Not pretty; very effective.</td></tr>
-
-          <tr><td class="rank">9</td><td class="team">BenVan</td><td class="wins">17.90</td><td class="pct"><span class="tag playoffs">41.0%</span></td><td class="pct"><span class="tag title">3.0%</span></td><td class="tlrd">Blue-collar stars clocked in early, clocked out late, and left your opponent filing for OSHA. Nothing fancy, just consistent violence. Your TE is still a haunted house, but the rest of the roster pays the mortgage.</td></tr>
-
-          <tr><td class="rank">10</td><td class="team">Cgokan35</td><td class="wins">17.60</td><td class="pct"><span class="tag playoffs">36.0%</span></td><td class="pct"><span class="tag title">2.0%</span></td><td class="tlrd">Your WR1 gave stump speeches; the cabinet occasionally remembered its notes. The two Week 9 ring-leaders were sexy on camera, filibuster off script. Policy passed anyway: six for a touchdown.</td></tr>
-
-          <tr><td class="rank">11</td><td class="team">sYsTeMheaD</td><td class="wins">17.10</td><td class="pct"><span class="tag playoffs">28.0%</span></td><td class="pct"><span class="tag title">1.0%</span></td><td class="tlrd">Noise-rock box score: volume fantastic, tuning optional. The two headliners landed haymakers while everyone else fiddled with pedals. Chaos is the brand; touchdowns are the kink.</td></tr>
-
-          <tr><td class="rank">12</td><td class="team">warriors85</td><td class="wins">16.60</td><td class="pct"><span class="tag playoffs">21.0%</span></td><td class="pct"><span class="tag title">&lt;1%</span></td><td class="tlrd">Oppenheimer offense: your top two were the blast; the rest held the Geiger counter. Still dangerous, still radioactive, still a little hot. One trade and this turns from fallout to fireworks.</td></tr>
-
-          <tr><td class="rank">13</td><td class="team">JayHawk477</td><td class="wins">16.10</td><td class="pct"><span class="tag playoffs">14.0%</span></td><td class="pct"><span class="tag title">&lt;1%</span></td><td class="tlrd">Metallica riff, kazoo chorus — the stars shredded, the flex mumbled. Your two best made it art; everyone else smoked in the parking lot. Not performance: confession.</td></tr>
-
-          <tr><td class="rank">14</td><td class="team">JustinMcAndrews</td><td class="wins">15.40</td><td class="pct"><span class="tag playoffs">8.0%</span></td><td class="pct"><span class="tag title">&lt;1%</span></td><td class="tlrd">Vegas chapel wedding at 3 a.m. — bad plan, great photos, expensive regret. The two Week 9 bright spots tried; the rest hit snooze. This isn't rebuilding; it's repenting.</td></tr>
-
-        </tbody>
-      </table>
+      <div class="table-scroller">
+        <table>
+          <thead>
+            <tr>
+              <th class="rank">#</th>
+              <th>Team</th>
+              <th>Exp. Wins</th>
+              <th>Playoff Odds</th>
+              <th>Title Odds</th>
+              <th>TL;DR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="rank">1</td><td class="team">mattburmeister</td><td class="wins">21.90</td><td class="pct"><span class="tag playoffs">98.0%</span></td><td class="pct"><span class="tag title">22.0%</span></td><td class="tlrd">Week 9 receipts read like a guilty pleasure playlist — two stars headlined your crime spree and the box score needed a cigarette. QB play was adult cinema, RBs handled cleanup, and the flex texted your opponent "my bad" with a winky face. This wasn't a win; it was a public service announcement about hydration.</td></tr>
+            <tr><td class="rank">2</td><td class="team">bburmeister170</td><td class="wins">21.40</td><td class="pct"><span class="tag playoffs">96.0%</span></td><td class="pct"><span class="tag title">19.0%</span></td><td class="tlrd">Your top two in Week 9 walked in like bottle service and left with someone else's tab. Red-zone execution was rude, precise, and technically legal in three states. If this roster gets any more efficient, we'll have to declare it a monopoly.</td></tr>
+            <tr><td class="rank">3</td><td class="team">dolfinstrykers</td><td class="wins">20.80</td><td class="pct"><span class="tag playoffs">92.0%</span></td><td class="pct"><span class="tag title">15.0%</span></td><td class="tlrd">Your Week 9 headliners turned coverage shells into papier-mâché. The stack hit like espresso with a side of bad decisions, and the bench still made eye contact. Opponents left needing electrolytes and a streaming QB.</td></tr>
+            <tr><td class="rank">4</td><td class="team">kris3434</td><td class="wins">20.20</td><td class="pct"><span class="tag playoffs">88.0%</span></td><td class="pct"><span class="tag title">11.0%</span></td><td class="tlrd">The Week 9 co-conspirators were missionary-efficient with freak energy. You didn't just win routes; you filed paperwork. It's football's version of "yes chef" — precise, commanding, and vaguely inappropriate.</td></tr>
+            <tr><td class="rank">5</td><td class="team">Jas10241958</td><td class="wins">19.70</td><td class="pct"><span class="tag playoffs">82.0%</span></td><td class="pct"><span class="tag title">9.0%</span></td><td class="tlrd">Your RB1 and WR1 ran Week 9 like a smash-and-grab with better cardio. Matchups were milked like commissions, touchdowns tipped generously. The fantasy equivalent of hate-sex: nobody's proud, everybody remembers.</td></tr>
+            <tr><td class="rank">6</td><td class="team">willpetsche</td><td class="wins">19.10</td><td class="pct"><span class="tag playoffs">76.0%</span></td><td class="pct"><span class="tag title">7.0%</span></td><td class="tlrd">Your top two came in like a drunk ex at 2 a.m. — loud, dramatic, and surprisingly productive. Every drive looked like regret wrapped in touchdowns. It's chaos, but the kind that tips well.</td></tr>
+            <tr><td class="rank">7</td><td class="team">benessig</td><td class="wins">18.60</td><td class="pct"><span class="tag playoffs">61.0%</span></td><td class="pct"><span class="tag title">5.0%</span></td><td class="tlrd">Headliners in Week 9 gaslit every cornerback in their way. Efficiency kink fully activated; the flex just nodded like "of course we meant to do that." It's jurisprudence with abs.</td></tr>
+            <tr><td class="rank">8</td><td class="team">sdallas979</td><td class="wins">18.20</td><td class="pct"><span class="tag playoffs">48.0%</span></td><td class="pct"><span class="tag title">4.0%</span></td><td class="tlrd">Two studs treated the red zone like Tinder — quick, messy, satisfying. The WRs tease, the RBs finish, and the goalpost needs makeup remover. Not pretty; very effective.</td></tr>
+            <tr><td class="rank">9</td><td class="team">BenVan</td><td class="wins">17.90</td><td class="pct"><span class="tag playoffs">41.0%</span></td><td class="pct"><span class="tag title">3.0%</span></td><td class="tlrd">Blue-collar stars clocked in early, clocked out late, and left your opponent filing for OSHA. Nothing fancy, just consistent violence. Your TE is still a haunted house, but the rest of the roster pays the mortgage.</td></tr>
+            <tr><td class="rank">10</td><td class="team">Cgokan35</td><td class="wins">17.60</td><td class="pct"><span class="tag playoffs">36.0%</span></td><td class="pct"><span class="tag title">2.0%</span></td><td class="tlrd">Your WR1 gave stump speeches; the cabinet occasionally remembered its notes. The two Week 9 ring-leaders were sexy on camera, filibuster off script. Policy passed anyway: six for a touchdown.</td></tr>
+            <tr><td class="rank">11</td><td class="team">sYsTeMheaD</td><td class="wins">17.10</td><td class="pct"><span class="tag playoffs">28.0%</span></td><td class="pct"><span class="tag title">1.0%</span></td><td class="tlrd">Noise-rock box score: volume fantastic, tuning optional. The two headliners landed haymakers while everyone else fiddled with pedals. Chaos is the brand; touchdowns are the kink.</td></tr>
+            <tr><td class="rank">12</td><td class="team">warriors85</td><td class="wins">16.60</td><td class="pct"><span class="tag playoffs">21.0%</span></td><td class="pct"><span class="tag title">&lt;1%</span></td><td class="tlrd">Oppenheimer offense: your top two were the blast; the rest held the Geiger counter. Still dangerous, still radioactive, still a little hot. One trade and this turns from fallout to fireworks.</td></tr>
+            <tr><td class="rank">13</td><td class="team">JayHawk477</td><td class="wins">16.10</td><td class="pct"><span class="tag playoffs">14.0%</span></td><td class="pct"><span class="tag title">&lt;1%</span></td><td class="tlrd">Metallica riff, kazoo chorus — the stars shredded, the flex mumbled. Your two best made it art; everyone else smoked in the parking lot. Not performance: confession.</td></tr>
+            <tr><td class="rank">14</td><td class="team">JustinMcAndrews</td><td class="wins">15.40</td><td class="pct"><span class="tag playoffs">8.0%</span></td><td class="pct"><span class="tag title">&lt;1%</span></td><td class="tlrd">Vegas chapel wedding at 3 a.m. — bad plan, great photos, expensive regret. The two Week 9 bright spots tried; the rest hit snooze. This isn't rebuilding; it's repenting.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <p class="footer">Method: Weeks 1–9 strength (Starters + 0.30×Bench), simulated 5 remaining weeks with median-win (top-7 points) + H2H. Week 9 blurbs are written to reference each team's top-two scorers.</p>
+    <p class="footer">
+      Method: Weeks 1–9 strength (Starters + 0.30×Bench), simulated 5 remaining weeks with median-win (top-7 points) + H2H.
+      Week 9 blurbs are written to reference each team's top-two scorers.
+    </p>
   </div>
 </body>
 </html>
