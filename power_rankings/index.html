@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Moneyball NFL</title>
+<title>Power Rankings Archive - Moneyball NFL</title>
 <style>
   :root { --bg:#0f1115; --panel:#151823; --text:#e6e8ef; --muted:#a4a8b7; --accent:#8bc34a; --accent2:#ffca28; --border:#2a2f3a; }
   *{box-sizing:border-box}
@@ -16,21 +16,32 @@
   a.link:hover{background:rgba(255,255,255,.08);border-color:var(--accent);transform:translateX(4px)}
   .week{font-weight:700;font-size:20px;color:var(--accent2)}
   .desc{color:var(--muted);font-size:14px}
+  .back{display:inline-block;margin-bottom:30px;color:var(--accent);text-decoration:none;font-size:14px;transition:all .2s ease}
+  .back:hover{transform:translateX(-4px)}
   footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px}
 </style>
 </head>
 <body>
   <div class="wrap">
-    <h1>🏈 Moneyball NFL</h1>
-    <p class="sub">Data-driven analysis and insights for the beautiful chaos of football.</p>
+    <a class="back" href="/">← Back to Home</a>
+    <h1>🏈 Power Rankings Archive</h1>
+    <p class="sub">Select a week to relive the chaos, the carnage, and the creative profanity.</p>
     <div class="card">
-      <a class="link" href="/power_rankings/index.html">
-        <div class="week">Power Rankings</div>
-        <div class="desc">Weekly power rankings with fresh odds, sharp takes, and creative profanity.</div>
+      <a class="link" href="/power_rankings/week_9_power.html">
+        <div class="week">Week 9 Power Rankings</div>
+        <div class="desc">Player-Specific Roast Edition — names named, plays slain, dignity optional.</div>
+      </a>
+      <a class="link" href="/power_rankings/week_8_power.html">
+        <div class="week">Week 8 Power Rankings</div>
+        <div class="desc">Director's Cut — fresh odds, fresh insults, same beautiful violence.</div>
+      </a>
+      <a class="link" href="/power_rankings/week_7_power.html">
+        <div class="week">Week 7 Power Rankings</div>
+        <div class="desc">The original banger — the moment the league realized feelings are optional.</div>
       </a>
     </div>
     <footer>
-      Updated as new content drops.<br />Hosted via Netlify · Designed by Moneyball Analyst 🧠💀
+      Updated as new power rankings drop.<br />Hosted via Netlify · Designed by Moneyball Analyst 🧠💀
     </footer>
   </div>
 </body>
